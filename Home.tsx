@@ -49,7 +49,7 @@ function HomeSample(): JSX.Element {
                 </View>
 
                 <Text>
-                    SÂN BÓNG TỐT NHẤT
+                    SÂN BÓNG TỐT VÃI LỒN
                 </Text>
 
                 <View style={styles.totNhat}>
