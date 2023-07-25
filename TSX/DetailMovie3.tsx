@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
         flex: 4,
 
     },
-
+dmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm git lz
 
 });
 
