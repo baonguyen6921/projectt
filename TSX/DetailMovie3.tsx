@@ -43,7 +43,7 @@ function MovieDetail3(): JSX.Element {
             setIsLoading(false)
         })
     }
-
+cc
     return (
         <View style={styles.container}>
             <View style={styles.top} >
