@@ -19,78 +19,9 @@ import navigate from './Navigation';
 
 
 
-function HomeScreen({navigation}): JSX.Element {
+function SearchSan({navigation}): JSX.Element {
 
-    const DATA = [
-        {
-            id: 'h1',
-            title: 'First Item',
-            thumbnail: 'https://baothainguyen.vn/file/oldimage/baothainguyen/UserFiles/images/news/26.3.2009_8h52_stadium26309.jpg',
-            address: 'Sir Matt Busby Way, Old Trafford, Stretford, Manchester M16 0RA, United Kingdom'
-        },
-        {
-            id: 'h2',
-            title: 'Second Item',
-            thumbnail: 'https://baothainguyen.vn/file/oldimage/baothainguyen/UserFiles/images/news/26.3.2009_8h52_stadium26309.jpg',
-            address: 'Sir Matt Busby Way, Old Trafford, Stretford, Manchester M16 0RA, United Kingdom'
-        },
-        {
-            id: 'h3',
-            title: 'Third Item',
-            thumbnail: 'https://baothainguyen.vn/file/oldimage/baothainguyen/UserFiles/images/news/26.3.2009_8h52_stadium26309.jpg',
-            address: 'Sir Matt Busby Way, Old Trafford, Stretford, Manchester M16 0RA, United Kingdom'
-        },
-        {
-            id: 'h4',
-            title: 'Four Item',
-            thumbnail: 'https://baothainguyen.vn/file/oldimage/baothainguyen/UserFiles/images/news/26.3.2009_8h52_stadium26309.jpg',
-            address: 'Sir Matt Busby Way, Old Trafford, Stretford, Manchester M16 0RA, United Kingdom'
-        },
-        {
-            id: 'h5',
-            title: 'Fifth Item',
-            thumbnail: 'https://baothainguyen.vn/file/oldimage/baothainguyen/UserFiles/images/news/26.3.2009_8h52_stadium26309.jpg',
-            address: 'Sir Matt Busby Way, Old Trafford, Stretford, Manchester M16 0RA, United Kingdom'
-        },
-    ];
     
-    type ItemProps = {
-        title: string,
-        thumbnail: string,
-        address: string,
-    };
-    
-    const Item = ({ title, thumbnail, address }: ItemProps) => (
-        <View style={styles.item1}>
-            <TouchableOpacity
-            onPress={()=>{navigation.navigate('Xem sân')}}>
-            <Image
-                style={styles.tinyLogo}
-                source={{
-                    uri: thumbnail,
-                }}
-            />
-            <View style={{ flexDirection: 'column', width: 200 }}>
-                <Text style={[styles.title, { fontWeight: 'bold',fontSize:20 }]}>{title}</Text>
-                <Text style={styles.title}>{address}</Text>
-            </View>
-            </TouchableOpacity>
-            
-    
-        </View>
-    );
-    
-    const ItemTwo = ({ thumbnail}: ItemProps) => (
-        <View style={styles.item2}>
-            <Image
-                style={styles.bannerImg}
-                source={{
-                    uri: thumbnail,
-                }}
-            />
-            
-        </View>
-    );
 
     return (
 
@@ -105,8 +36,7 @@ function HomeScreen({navigation}): JSX.Element {
                             style={styles.icon}
                             source={require('/FileOfBao/Mobile/BongDaProject/image/ic_notice.png')} />
                     </TouchableOpacity>
-                    <TouchableOpacity
-                    onPress={()=>{navigation.navigate('Cá nhân')}}>
+                    <TouchableOpacity>
                         <Image
                             style={styles.icon}
                             source={require('/FileOfBao/Mobile/BongDaProject/image/ic_user.png')} />
@@ -130,7 +60,6 @@ function HomeScreen({navigation}): JSX.Element {
                             keyExtractor={item => item.id}
                             horizontal={true}
                             contentContainerStyle={{
-
                                 flexWrap: 'wrap'
                             }}
                         />
@@ -260,6 +189,7 @@ const styles = StyleSheet.create({
     bannerImg:{
         width: 300,
         height: 200,
+        borderWidth:5,
         shadowRadius: 10,
         shadowOpacity: 5,
         elevation: 5
@@ -334,4 +264,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default HomeScreen
+export default SearchSan

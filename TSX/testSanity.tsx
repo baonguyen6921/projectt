@@ -11,55 +11,41 @@ import {
     SafeAreaView,
     RefreshControl,
 } from 'react-native';
-import getMovieInfo from '../apis/movieAPI';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { getSanBongInfo } from '../apis/api';
+import urlBuilder from '@sanity/image-url';
+import { urlFor } from '../sanity';
+import sanbong from '../bongda-project/schemas/sanbong';
 
-function testFlatlistAPI({navigation}): JSX.Element {
+function testSanity(): JSX.Element {
     const [data, setData] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [refreshing, setRefreshing] = React.useState(false);
  
 
-    const onRefresh = React.useCallback(() => {
-        setIsLoading(true)
-        setRefreshing(true);
-        setTimeout(() => {
-            getAPI('doraemon',1);
-          setRefreshing(false);
-        }, 2000);
-      }, []);
-
+    
 
     useEffect(() => {
-        setIsLoading(true)
-        getAPI('doraemon',1)
+        getSanBongInfo().then(data=>
+            setData(data))
     }, [])
    
 
 
-    const getAPI = (a: string,b: number)=>{
-        getMovieInfo(a,b).then(res => {
-            if (res !== null || res !== undefined) {
-                setData(res["Search"])
-                setIsLoading(false);
-            }
-        })
-    }
+    
 
-    const renderItem = ({ item}) => (
+    const renderItem = ({item}) => (
         <View >
             <TouchableOpacity 
             style={styles.item} 
-            onPress={()=>{navigation.navigate('Movie Detail')}}>
+            >
             <Image
                 style={styles.image}
                 
-                source={{ uri: item.Poster }}
+                source={{ uri: urlFor(item.image).url() }}
                 resizeMode='contain' />
             <View style={styles.wrapText}>
                 
-                <Text>{item.Title} ({item.Year})</Text>
+                <Text>{item.name} </Text>
                 
             </View>
             </TouchableOpacity>
@@ -84,12 +70,12 @@ function testFlatlistAPI({navigation}): JSX.Element {
                 <FlatList
                     style={styles.list}
                     data={data}
-                    keyExtractor={item => `key-${item.imdbID}`}
+                    // keyExtractor={item => `key-${item._id}`}
                     renderItem={renderItem}
                     // refreshing={this.state.refreshing}
-                    refreshControl={
-                    <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-                    }
+                    // refreshControl={
+                    // <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+                    // }
 
                 />
             )}
@@ -150,4 +136,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default testFlatlistAPI
+export default testSanity
